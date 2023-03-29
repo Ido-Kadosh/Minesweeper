@@ -1,0 +1,89 @@
+* {
+	margin: auto;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border: none;
+	left: 37%;
+}
+
+td {
+	border: none;
+	padding: 0px;
+	height: 64px;
+}
+
+img {
+	height: 100%;
+	display: block;
+}
+
+.hints-container {
+	display: inline-flex;
+}
+
+.top-container {
+	margin: 0px;
+}
+
+.smiley-button,
+.hints-button {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	height: 64px;
+	width: 64px;
+	position: relative;
+}
+
+.smiley-button {
+	top: 10px;
+}
+
+.smiley-img:active {
+	content: url('../img/minesweeper_smile_clicked.png');
+}
+
+.closed-cell:active {
+	content: url('../img/minesweeper_00.png');
+}
+
+.mine-count,
+.timer {
+	display: inline-block;
+	width: 192px;
+	height: 64px;
+	background-image: url('../img/minesweeper_cell.png');
+	background-repeat: repeat-x;
+	background-size: 64px;
+	color: red;
+	font-size: 60px;
+}
+
+.difficulties button {
+	display: inline-block;
+	width: 192px;
+	height: 66px;
+	background-image: url('../img/minesweeper_button.png');
+	background-size: 64px;
+	background-size: contain;
+	color: black;
+	font-size: 32px;
+	font-weight: 1000;
+	margin: 0px 10px 0px;
+}
+.difficulties button:active {
+	background-image: url('../img/minesweeper_button_pressed.png');
+}
+.hidden {
+	visibility: hidden;
+}
