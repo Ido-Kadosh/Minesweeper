@@ -71,11 +71,11 @@ img {
 }
 
 .smiley-img:active {
-	content: '../img/minesweeper_smile_clicked.png';
+	content: url('../img/minesweeper_smile_clicked.png');
 }
 
 .closed-cell:active {
-	content: '../img/minesweeper_00.png';
+	content: url('../img/minesweeper_00.png');
 }
 
 .mine-count,
@@ -83,7 +83,7 @@ img {
 	display: inline-block;
 	width: 192px;
 	height: 64px;
-	background-image: '../img/minesweeper_cell.png';
+	background-image: url('../img/minesweeper_cell.png');
 	background-repeat: repeat-x;
 	background-size: 64px;
 	color: red;
@@ -93,7 +93,7 @@ img {
 .self-place-button,
 .safe-click-button,
 .undo-button {
-	background-image: '../img/minesweeper_button.png';
+	background-image: url('../img/minesweeper_button.png');
 	background-repeat: repeat-x;
 	color: black;
 	font-size: 25px;
@@ -104,7 +104,7 @@ img {
 	display: inline-block;
 	width: 192px;
 	height: 66px;
-	background-image: '../img/minesweeper_button.png';
+	background-image: url('../img/minesweeper_button.png');
 	background-size: 64px;
 	background-size: contain;
 	color: black;
@@ -117,20 +117,20 @@ img {
 .safe-click-button:active,
 .undo-button:active,
 .self-place-button:active {
-	background-image: '../img/minesweeper_button_pressed.png';
+	background-image: url('../img/minesweeper_button_pressed.png');
 }
 
 .mega-hint:active,
 .mine-exterminator:active {
-	background-image: '../img/mega_hint_button_pressed.png';
+	background-image: url('../img/mega_hint_button_pressed.png');
 }
 
 .mine-exterminator-pressed {
-	background-image: '../img/mega_hint_button_pressed.png';
+	background-image: url('../img/mega_hint_button_pressed.png');
 }
 
 .mega-hint-button-pressed {
-	background-image: '../img/mega_hint_button_pressed.png';
+	background-image: url('../img/mega_hint_button_pressed.png');
 	border: 3px solid red;
 }
 
@@ -155,7 +155,7 @@ li {
 }
 
 .button-pressed {
-	background-image: '../img/minesweeper_button_pressed.png';
+	background-image: url('../img/minesweeper_button_pressed.png');
 	border: 3px solid red;
 }
 
