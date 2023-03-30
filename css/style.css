@@ -42,7 +42,7 @@ img {
 
 .mega-hint,
 .mine-exterminator {
-	background-image: '../img/mega_hint_button.png';
+	background-image: url('../img/mega_hint_button.png');
 	height: 187px;
 	width: 64px;
 	background-size: contain;
