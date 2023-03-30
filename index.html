@@ -8,21 +8,44 @@
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body onload="onInit()">
-		<span class="hints-container"></span>
+		<div class="dark-mode-container"><button class="dark-mode-button" onclick="onDarkModeToggle(this)"><div class="circle"></div></button></div>
+
+		<div class="self-place-container">
+			<button class="self-place-button" onclick="onSelfPlace(this)">Self Place</button>
+			<span class="self-place-counter"></span>
+		</div>
+
+		<div class="safe-click-container">
+			<button class="safe-click-button" onclick="onSafeClick()">Safe Click</button>
+			<div class="safe-click-counter"><span>3</span> safe clicks available</div>
+		</div>
+
+		<div class="undo-Container">
+			<button class="undo-button" onclick="undo()">Undo</button>
+		</div>
+
+		<div class="lives-container"></div>
 		<div class="top-container">
 			<span class="mine-count"></span><span class="smiley-container"></span><span class="timer"></span>
 		</div>
 
 		<div class="game-container">
+			<span class="hints-container"></span>
 			<table class="board"></table>
+			<div class="mega-hint-container"><button class="mega-hint" onclick="onMegaClick(this)">MEGA</button>
+				<span class="mine-exterminator-container"><button class="mine-exterminator" onclick="onMineExterminate(this)">terminate</button></span>
+			</div>
+			
 		</div>
 		<div class="difficulties">
 			<button onclick="setDifficulty(0)">Beginner</button><button onclick="setDifficulty(1)">Medium</button
 			><button onclick="setDifficulty(2)">Expert</button>
 		</div>
+		<div class="score-board"></div>
+		<div class="win-modal hidden">You win!</div>
 
 		<script src="js/game.js"></script>
 		<script src="js/utils.js"></script>
-	</body>
-	<footer>Ido Kadosh</footer>
+	</div>
+	<footer>github.com/Ido-kadosh <span>Made by Ido Kadosh</span></footer>
 </html>
