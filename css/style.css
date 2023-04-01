@@ -155,7 +155,7 @@ li {
 }
 
 .button-pressed {
-	background-image: url('../img/minesweeper_button_pressed.png');
+	background-image: url('/img/minesweeper_button_pressed.png');
 	border: 3px solid red;
 }
 

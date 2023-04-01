@@ -83,6 +83,7 @@ function onInit() {
 	};
 
 	renderSafeClickCount();
+	renderButtonsClickable();
 	gGame.isHint = false;
 	gGame.isBlinking = false;
 	gBoard = createBoard();
@@ -218,6 +219,17 @@ function renderHints(num) {
 		strHTML += `<button class="hints-button" onclick="onHintClicked(this)">${HINT_IMG.hint}</button></br>`;
 	}
 	elHintContainer.innerHTML = strHTML;
+}
+
+function onHintClicked(elHint) {
+	if (elHint.innerHTML === HINT_IMG.hint) {
+		if (gGame.isHint) return;
+		elHint.innerHTML = HINT_IMG.clicked;
+		gGame.isHint = true;
+	} else {
+		elHint.innerHTML = HINT_IMG.hint;
+		gGame.isHint = false;
+	}
 }
 
 function handleGameOver(clickedCellPos) {
@@ -368,17 +380,6 @@ function renderTimer(time) {
 	elTimer.innerHTML = time;
 }
 
-function onHintClicked(elHint) {
-	if (elHint.innerHTML === HINT_IMG.hint) {
-		if (gGame.isHint) return;
-		elHint.innerHTML = HINT_IMG.clicked;
-		gGame.isHint = true;
-	} else {
-		elHint.innerHTML = HINT_IMG.hint;
-		gGame.isHint = false;
-	}
-}
-
 function renderLives() {
 	const elLivesContainer = document.querySelector('.lives-container');
 	elLivesContainer.innerHTML = `lives: ${gGame.lives}`;
@@ -440,6 +441,8 @@ function onSelfPlace(elButton) {
 
 function onMegaClick(elButton) {
 	if (gGame.isHint || gGame.isMegaUsed) return;
+
+	if (gGame.isMegaHint) gMegaHintFirstIdx = '';
 	gGame.isMegaHint = !gGame.isMegaHint;
 	elButton.classList.toggle('mega-hint-button-pressed');
 }
@@ -450,6 +453,7 @@ function handleMegaHint(elCell) {
 }
 
 function showMegaHint(cellPos1, cellPos2) {
+	gGame.isOn = false; //don't allow clicks while mega hint is showing.
 	var lowerI = Math.min(cellPos1.i, cellPos2.i);
 	var lowerJ = Math.min(cellPos1.j, cellPos2.j);
 	var higherI = Math.max(cellPos1.i, cellPos2.i);
@@ -466,7 +470,19 @@ function showMegaHint(cellPos1, cellPos2) {
 				neighCount = countNeighMines(elCell);
 				renderCell({ i, j }, NUMBER_IMG[neighCount]);
 			}
-			setTimeout(renderCell, MEGA_HINT_TIMEOUT, { i, j }, CELL_HIDDEN_IMG);
+			//we send i and j because of we use i,j from above, setTimeout will only work on the last value of i and j
+			//because i and j keeps changing we need to send it to the function.
+			setTimeout(
+				(i, j) => {
+					renderCell({ i, j }, CELL_HIDDEN_IMG);
+					gGame.isOn = true;
+				},
+				MEGA_HINT_TIMEOUT,
+				i,
+				j
+			);
+
+			//setTimeout(renderCell, MEGA_HINT_TIMEOUT, { i, j }, CELL_HIDDEN_IMG);
 		}
 	}
 	const elMegaButton = document.querySelector('.mega-hint');
@@ -645,4 +661,16 @@ function setDarkMode() {
 		//changing to light mode
 		document.body.classList.remove('dark-mode');
 	}
+}
+
+function renderButtonsClickable() {
+	const elMegaButton = document.querySelector('.mega-hint');
+	elMegaButton.classList.remove('mine-exterminator-pressed');
+	elMegaButton.disabled = false;
+	elMegaButton.style.cursor = 'pointer';
+
+	const elExterminateButton = document.querySelector('.mine-exterminator');
+	elExterminateButton.classList.remove('mine-exterminator-pressed');
+	elExterminateButton.disabled = false;
+	elExterminateButton.style.cursor = 'pointer';
 }
